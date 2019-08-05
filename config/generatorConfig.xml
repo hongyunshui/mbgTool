@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <!-- <classPathEntry location="lib/mybatis-generator-core-1.3.7.zip" /> -->
+
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+  	<commentGenerator>
+    	<!-- 是否去除自动生成的注释 -->
+    	<property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+    
+  	<!-- db2数据库连接信息 -->
+    <!-- <jdbcConnection driverClass="COM.ibm.db2.jdbc.app.DB2Driver"
+        connectionURL="jdbc:db2:TEST"
+        userId="db2admin"
+        password="db2admin">
+    </jdbcConnection> -->
+    
+    <!-- oracle 数据库连接信息 -->
+   <!--  <jdbcConnection driverClass="oracle.jdbc.OracleDriver" 
+    	connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg"
+    	userId="yycg"
+    	password="yycg">
+    </jdbcConnection> -->
+    
+    <!-- MySql数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" 
+    	connectionURL="jdbc:mysql://192.168.10.20:3306/taotao?characterEncoding=utf-8"
+    	userId="taotao"
+    	password="taotao">
+    </jdbcConnection>
+
+	<!-- 默认为false，把JDBC DECIMAL 和NUMERIC类型解析为Integer，为true时
+		把JDBC DECIMAL 和NUMERIC类型解析为java.math.BigDecimal -->
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- targetProject：生成POJO类的位置 -->
+    <javaModelGenerator targetPackage="com.hys.ssm.po" targetProject=".\src">
+    	<!-- enableSubPackages:是否让schema作为包的后缀 -->
+      <property name="enableSubPackages" value="false" />
+      <!-- 从数据库返回的值被清理前后的空格 -->
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- targetProject：mapper映射文件生成的位置 -->
+    <sqlMapGenerator targetPackage="com.hys.ssm.mapper"  targetProject=".\src">
+    	<!-- enableSubPackages:是否让schema作为包的后缀 -->
+      <property name="enableSubPackages" value="false" />
+    </sqlMapGenerator>
+
+	<!-- targetProject：mapper接口生成的的位置 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.hys.ssm.mapper"  targetProject=".\src">
+    	<!-- enableSubPackages:是否让schema作为包的后缀 -->
+      <property name="enableSubPackages" value="false" />
+    </javaClientGenerator>
+
+	<!-- 指定数据表 -->
+	<table schema="" tableName="tb_content"></table>
+	<table schema="" tableName="tb_content_category"></table>
+	<table schema="" tableName="tb_item"></table>
+	<table schema="" tableName="tb_item_cat"></table>
+	<table schema="" tableName="tb_item_desc"></table>
+	<table schema="" tableName="tb_item_param"></table>
+	<table schema="" tableName="tb_item_param_item"></table>
+	<table schema="" tableName="tb_order"></table>
+	<table schema="" tableName="tb_order_item"></table>
+	<table schema="" tableName="tb_order_shipping"></table>
+	<table schema="" tableName="tb_user"></table>
+
+	<!-- 有些表的字段需要指定java类型-->
+   <!--  <table schema="DB2ADMIN" tableName="ALLTYPES" domainObjectName="Customer" >
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="ID" sqlStatement="DB2" identity="true" />
+      <columnOverride column="DATE_FIELD" property="startDate" />
+      <ignoreColumn column="FRED" />
+      <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />
+    </table> -->
+
+  </context>
+</generatorConfiguration>
