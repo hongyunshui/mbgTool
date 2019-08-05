@@ -1,5 +1,4 @@
-# mbgtool
-mybatis逆向工程 工具
+# mbgtool——mybatis逆向工程 工具
 
 # 所需jdk版本 
     jdk1.7
